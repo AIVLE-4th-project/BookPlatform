@@ -30,7 +30,7 @@ public class Book {
     private String coverImage;
 
     // AI가 생성한 표지 이미지 (URL 또는 base64 등)
-    private String aiGeneratedCover;
+    private String imageUrl;
 
     // AI 키워드 기반 태그 저장용
     private String aiKeywords;
