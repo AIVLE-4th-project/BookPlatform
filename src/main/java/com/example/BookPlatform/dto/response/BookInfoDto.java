@@ -9,7 +9,9 @@ import lombok.Getter;
 
 public class BookInfoDto {
     @Column
-    private  String title;
+    private  String title; //제목
     @Column
-    private  String content;
+    private  String content; //본문
+    @Column
+    private String updatedAt; //수정일
 }
