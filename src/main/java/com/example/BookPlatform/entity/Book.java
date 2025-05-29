@@ -26,13 +26,14 @@ public class Book {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    // 표지 이미지 (직접 업로드 또는 AI 생성)
-    private String coverImage;
+    @Column
+    private String coverImage; //표지 이미지
 
-    // AI가 생성한 표지 이미지 (URL 또는 base64 등)
-    private String imageUrl;
+    @Column
+    private String imageUrl; //url
 
     // AI 키워드 기반 태그 저장용
+    @Column
     private String aiKeywords;
 
     // 등록일
