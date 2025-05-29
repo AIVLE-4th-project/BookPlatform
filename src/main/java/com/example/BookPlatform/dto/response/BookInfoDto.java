@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Builder
 
@@ -13,5 +15,5 @@ public class BookInfoDto {
     @Column
     private  String content; //본문
     @Column
-    private String updatedAt; //수정일
+    private LocalDateTime updatedAt; //수정일
 }
