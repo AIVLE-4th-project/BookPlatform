@@ -1,6 +1,7 @@
 package com.example.BookPlatform.controller;
 
 import com.example.BookPlatform.dto.request.BookIdDto;
+import com.example.BookPlatform.dto.request.SaveBookInfoDto;
 import com.example.BookPlatform.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class BookController {
     }
 
     @PostMapping(value = "regist-book") //책 정보 등록
-    public ResponseEntity<?> registBook(@RequestBody BookIdDto bookIdDto){
+    public ResponseEntity<?> registBook(@RequestBody SaveBookInfoDto saveBookInfoDto){
         return new ResponseEntity<>("regist success",HttpStatus.OK);
     }
 
