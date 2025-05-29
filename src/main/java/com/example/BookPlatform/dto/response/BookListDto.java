@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 @Builder
 public class BookListDto {
     @Column
+    private Long id; //DB 기본키
+    @Column
     private  String title; //제목
     @Column
     private LocalDateTime createdAt; // 등록일
