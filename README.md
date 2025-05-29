@@ -15,13 +15,20 @@
 - Spring Data JPA
 - Lombok
 
+### 🖥️ 프론트엔드
+- JavaScript (ES6+)
+- React
+- Axios
+- React Router
+- Material-UI (MUI)
+
 ### 🗃️ 데이터베이스
 - H2 (개발용)
-- MySQL
 
 ### 🔗 API
 - RESTful API
 - OpenAI API (DALLE)
+
 
 ## 👥 팀원 소개
 
