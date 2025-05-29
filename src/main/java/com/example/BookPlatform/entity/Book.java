@@ -16,31 +16,25 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    // 제목
-    @Column(nullable = false)
-    private String title;
-
-    // 본문
-    @Column(columnDefinition = "TEXT")
-    private String content;
+    private Long id; // 기본키
 
     @Column
-    private String coverImage; //표지 이미지
+    private String title; // 제목
+
+    @Column
+    private String content; //본문
+
+    @Column
+    private String author; //저자
 
     @Column
     private String imageUrl; //url
 
-    // AI 키워드 기반 태그 저장용
-    @Column
-    private String aiKeywords;
-
     // 등록일
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt; //등록일
 
     // 수정일
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime updatedAt; //수정일
 }
