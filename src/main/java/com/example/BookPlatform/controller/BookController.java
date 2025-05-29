@@ -1,26 +1,41 @@
 package com.example.BookPlatform.controller;
 
+import com.example.BookPlatform.dto.request.BookIdDto;
 import com.example.BookPlatform.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 public class BookController {
     private  final BookService bookService;
 
-    @GetMapping(value = "/book-list")
+    @GetMapping(value = "/book-list") //전체 목록 조회
     public ResponseEntity<?>  getBookList() {
         return new ResponseEntity<>(bookService.getBookList(), HttpStatus.OK);
     }
 
 
-    @GetMapping(value = "/book-detail-info")
+    @GetMapping(value = "/book-detail-info") //상세 정보 조회
     public ResponseEntity<?> getBookDetailInfo( @RequestParam("id")Long id) {
         return new ResponseEntity<>(bookService.getBookDetailInfo(id), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "delete-book") //책 정보 삭제
+    public ResponseEntity<?> deletBook(@RequestBody BookIdDto bookIdDto){
+        return new ResponseEntity<>("delete success",HttpStatus.OK);
+    }
+
+    @PostMapping(value = "regist-book") //책 정보 등록
+    public ResponseEntity<?> registBook(@RequestBody BookIdDto bookIdDto){
+        return new ResponseEntity<>("regist success",HttpStatus.OK);
+    }
+
+
+    @PostMapping(value = "update-book") //책 정보 수정
+    public ResponseEntity<?> updateBook(@RequestBody BookIdDto bookIdDto){
+        return new ResponseEntity<>("update success",HttpStatus.OK);
     }
 }
