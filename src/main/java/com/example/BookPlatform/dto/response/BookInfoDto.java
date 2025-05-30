@@ -14,6 +14,13 @@ public class BookInfoDto {
     private  String title; //제목
     @Column
     private  String content; //본문
+
+    @Column
+    private String author; //작가
+
+    @Column
+    private String coverUrl; //표지 url
+
     @Column
     private LocalDateTime updatedAt; //수정일
 }
