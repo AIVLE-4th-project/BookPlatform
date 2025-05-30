@@ -26,11 +26,14 @@ public class BookController {
 
     @PostMapping(value = "delete-book") //책 정보 삭제
     public ResponseEntity<?> deleteBook(@RequestBody BookIdDto bookIdDto){
+
         return new ResponseEntity<>("delete success",HttpStatus.OK);
     }
 
     @PostMapping(value = "regist-book") //책 정보 등록
     public ResponseEntity<?> registBook(@RequestBody SaveBookInfoDto saveBookInfoDto){
+
+        bookService.registBook(saveBookInfoDto);
         return new ResponseEntity<>("regist success",HttpStatus.OK);
     }
 
