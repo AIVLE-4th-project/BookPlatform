@@ -27,8 +27,8 @@ public class ImageService {
         Map<String, Object> body = new HashMap<>();
         body.put("prompt", prompt);
         body.put("n", 1);
-        body.put("size", "512x512");
-
+        body.put("size", "1024x1024");
+        body.put("model", "dall-e-3");
         HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
 
         ResponseEntity<Map> response = restTemplate.postForEntity(
