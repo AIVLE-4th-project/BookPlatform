@@ -28,7 +28,7 @@ public class Book {
     private String author; //저자
 
     @Column
-    private String imageUrl; //url
+    private String coverUrl; //url
 
     // 등록일
     @CreationTimestamp
