@@ -26,7 +26,7 @@ public class BookController {
 
     @PostMapping(value = "delete-book") //책 정보 삭제
     public ResponseEntity<?> deleteBook(@RequestBody BookIdDto bookIdDto){
-
+        bookService.deleteBook(bookIdDto);
         return new ResponseEntity<>("delete success",HttpStatus.OK);
     }
 
