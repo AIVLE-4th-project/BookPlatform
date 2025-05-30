@@ -69,15 +69,22 @@ public class BookService {
     public void  deleteBook(BookIdDto bookIdDto) {
         bookRepository.deleteById(bookIdDto.getId());
     }
+
+    @Async
     public void updateBook(UpdateBookDto updateBookDto){
         Optional<Book> optionalBook = bookRepository.findById(updateBookDto.getId());
         Book book = optionalBook.get();
+
+
+        String prompt =  "The title of the book is " +updateBookDto.getTitle()+"and the content of the book is "
+                +updateBookDto.getContent()+ ". Please generate a cover image for this book.";
+
         book = Book.builder()
                 .id(updateBookDto.getId())
                 .title(updateBookDto.getTitle())
                 .content(updateBookDto.getContent())
                 .author(updateBookDto.getAuthor())
-                .coverUrl(optionalBook.get().getCoverUrl())
+                .coverUrl(imageService.generateImage(prompt))
                 .createdAt(optionalBook.get().getCreatedAt())
                 .updatedAt(LocalDateTime.now()) // 수동으로 설정
                 .build();
