@@ -7,6 +7,7 @@ import com.example.BookPlatform.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,6 +31,7 @@ public class BookController {
         bookService.deleteBook(bookIdDto);
         return new ResponseEntity<>("delete success",HttpStatus.OK);
     }
+
 
     @PostMapping(value = "/books") //책 정보 등록
     public ResponseEntity<?> registBook(@RequestBody SaveBookInfoDto saveBookInfoDto){

@@ -9,6 +9,7 @@ import com.example.BookPlatform.dto.response.BookListDto;
 import com.example.BookPlatform.entity.Book;
 import com.example.BookPlatform.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
+    private final ImageService imageService;
     public List<BookListDto> getBookList(){
         List<Book> bookList = bookRepository.findAll();
         List<BookListDto> bookInfoDtoList = new ArrayList<>();
@@ -48,12 +50,16 @@ public class BookService {
         return bookInfoDto;
     }
 
+    @Async
     public void registBook(SaveBookInfoDto saveBookInfoDto){
+        String prompt =  "The title of the book is " +saveBookInfoDto.getTitle()+"and the content of the book is "
+                +saveBookInfoDto.getContent()+ ". Please generate a cover image for this book.";
+
         Book book = Book.builder().
                 title(saveBookInfoDto.getTitle()).
                 content(saveBookInfoDto.getContent()).
                 author(saveBookInfoDto.getAuthor()).
-                coverUrl(saveBookInfoDto.getCoverUrl()).
+                coverUrl(imageService.generateImage(prompt)).
                 createdAt(LocalDateTime.now()).
                 updatedAt(LocalDateTime.now()).
                 build();
@@ -71,7 +77,7 @@ public class BookService {
                 .title(updateBookDto.getTitle())
                 .content(updateBookDto.getContent())
                 .author(updateBookDto.getAuthor())
-                .coverUrl(updateBookDto.getCoverUrl())
+                .coverUrl(optionalBook.get().getCoverUrl())
                 .createdAt(optionalBook.get().getCreatedAt())
                 .updatedAt(LocalDateTime.now()) // 수동으로 설정
                 .build();
