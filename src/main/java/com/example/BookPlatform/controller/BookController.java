@@ -13,24 +13,24 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
     private  final BookService bookService;
 
-    @GetMapping(value = "/book-list") //전체 목록 조회
+    @GetMapping(value = "/books") //전체 목록 조회
     public ResponseEntity<?>  getBookList() {
         return new ResponseEntity<>(bookService.getBookList(), HttpStatus.OK);
     }
 
 
-    @GetMapping(value = "/book-detail-info") //상세 정보 조회
-    public ResponseEntity<?> getBookDetailInfo( @RequestParam("id")Long id) {
+    @GetMapping(value = "/books-detail") //상세 정보 조회
+    public ResponseEntity<?> getBookDetailInfo( @RequestParam("id") Long id) {
         return new ResponseEntity<>(bookService.getBookDetailInfo(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "delete-book") //책 정보 삭제
+    @DeleteMapping(value = "/books") //책 정보 삭제
     public ResponseEntity<?> deleteBook(@RequestBody BookIdDto bookIdDto){
         bookService.deleteBook(bookIdDto);
         return new ResponseEntity<>("delete success",HttpStatus.OK);
     }
 
-    @PostMapping(value = "regist-book") //책 정보 등록
+    @PostMapping(value = "/books") //책 정보 등록
     public ResponseEntity<?> registBook(@RequestBody SaveBookInfoDto saveBookInfoDto){
 
         bookService.registBook(saveBookInfoDto);
@@ -38,8 +38,9 @@ public class BookController {
     }
 
 
-    @PostMapping(value = "update-book") //책 정보 수정
+    @PutMapping(value = "/books") //책 정보 수정
     public ResponseEntity<?> updateBook(@RequestBody BookIdDto bookIdDto){
+        System.out.println("제발: "+ bookIdDto.getId());
         return new ResponseEntity<>("update success",HttpStatus.OK);
     }
 }
