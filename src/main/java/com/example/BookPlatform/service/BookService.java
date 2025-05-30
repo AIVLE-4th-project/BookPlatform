@@ -36,6 +36,8 @@ public class BookService {
         BookInfoDto bookInfoDto = BookInfoDto.builder().
                 title(book.get().getTitle()).
                 content(book.get().getContent()).
+                author(book.get().getAuthor()).
+                coverUrl(book.get().getCoverUrl()).
                 updatedAt(book.get().getUpdatedAt()).
                 build();
         return bookInfoDto;
