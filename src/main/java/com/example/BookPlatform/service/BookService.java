@@ -31,6 +31,7 @@ public class BookService {
             BookListDto bookInfoDto = BookListDto.builder().
                     id(book.getId()).
                     title(book.getTitle()).
+                    coverUrl(book.getCoverUrl()).
                     createdAt(book.getCreatedAt()).
                     build();
             bookInfoDtoList.add(bookInfoDto);

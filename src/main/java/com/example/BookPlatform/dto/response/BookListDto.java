@@ -15,5 +15,7 @@ public class BookListDto {
     @Column
     private  String title; //제목
     @Column
+    private String coverUrl; //표지 url
+    @Column
     private LocalDateTime createdAt; // 등록일
 }
