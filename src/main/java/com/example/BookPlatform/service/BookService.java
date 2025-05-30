@@ -1,6 +1,7 @@
 package com.example.BookPlatform.service;
 
 
+import com.example.BookPlatform.dto.request.BookIdDto;
 import com.example.BookPlatform.dto.request.SaveBookInfoDto;
 import com.example.BookPlatform.dto.response.BookInfoDto;
 import com.example.BookPlatform.dto.response.BookListDto;
@@ -46,7 +47,6 @@ public class BookService {
     }
 
     public void registBook(SaveBookInfoDto saveBookInfoDto){
-
         Book book = Book.builder().
                 title(saveBookInfoDto.getTitle()).
                 content(saveBookInfoDto.getContent()).
@@ -56,5 +56,9 @@ public class BookService {
                 updatedAt(LocalDateTime.now()).
                 build();
         bookRepository.save(book);
+    }
+
+    public void  deleteBook(BookIdDto bookIdDto) {
+        bookRepository.deleteById(bookIdDto.getId());
     }
 }
