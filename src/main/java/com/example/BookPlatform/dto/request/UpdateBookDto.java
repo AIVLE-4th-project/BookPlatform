@@ -18,8 +18,5 @@ public class UpdateBookDto {
     @Column
     private String author; //저자
 
-    @Column
-    private String coverUrl; //이미지 url
-
 
 }
