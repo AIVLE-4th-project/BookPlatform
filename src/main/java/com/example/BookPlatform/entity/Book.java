@@ -27,7 +27,7 @@ public class Book {
     @Column
     private String author; //저자
 
-    @Column
+    @Column(length = 1000)
     private String coverUrl; //url
 
     // 등록일
