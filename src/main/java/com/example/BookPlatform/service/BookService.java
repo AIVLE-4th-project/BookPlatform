@@ -1,6 +1,7 @@
 package com.example.BookPlatform.service;
 
 
+import com.example.BookPlatform.dto.request.SaveBookInfoDto;
 import com.example.BookPlatform.dto.response.BookInfoDto;
 import com.example.BookPlatform.dto.response.BookListDto;
 import com.example.BookPlatform.entity.Book;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,5 +43,18 @@ public class BookService {
                 updatedAt(book.get().getUpdatedAt()).
                 build();
         return bookInfoDto;
+    }
+
+    public void registBook(SaveBookInfoDto saveBookInfoDto){
+
+        Book book = Book.builder().
+                title(saveBookInfoDto.getTitle()).
+                content(saveBookInfoDto.getContent()).
+                author(saveBookInfoDto.getAuthor()).
+                coverUrl(saveBookInfoDto.getCoverUrl()).
+                createdAt(LocalDateTime.now()).
+                updatedAt(LocalDateTime.now()).
+                build();
+        bookRepository.save(book);
     }
 }
