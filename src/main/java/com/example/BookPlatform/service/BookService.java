@@ -3,6 +3,7 @@ package com.example.BookPlatform.service;
 
 import com.example.BookPlatform.dto.request.BookIdDto;
 import com.example.BookPlatform.dto.request.SaveBookInfoDto;
+import com.example.BookPlatform.dto.request.UpdateBookDto;
 import com.example.BookPlatform.dto.response.BookInfoDto;
 import com.example.BookPlatform.dto.response.BookListDto;
 import com.example.BookPlatform.entity.Book;
@@ -61,5 +62,19 @@ public class BookService {
 
     public void  deleteBook(BookIdDto bookIdDto) {
         bookRepository.deleteById(bookIdDto.getId());
+    }
+    public void updateBook(UpdateBookDto updateBookDto){
+        Optional<Book> optionalBook = bookRepository.findById(updateBookDto.getId());
+        Book book = optionalBook.get();
+        book = Book.builder()
+                .id(updateBookDto.getId())
+                .title(updateBookDto.getTitle())
+                .content(updateBookDto.getContent())
+                .author(updateBookDto.getAuthor())
+                .coverUrl(updateBookDto.getCoverUrl())
+                .createdAt(optionalBook.get().getCreatedAt())
+                .updatedAt(LocalDateTime.now()) // 수동으로 설정
+                .build();
+         bookRepository.save(book);
     }
 }

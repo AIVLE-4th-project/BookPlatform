@@ -2,6 +2,7 @@ package com.example.BookPlatform.controller;
 
 import com.example.BookPlatform.dto.request.BookIdDto;
 import com.example.BookPlatform.dto.request.SaveBookInfoDto;
+import com.example.BookPlatform.dto.request.UpdateBookDto;
 import com.example.BookPlatform.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -39,8 +40,8 @@ public class BookController {
 
 
     @PutMapping(value = "/books") //책 정보 수정
-    public ResponseEntity<?> updateBook(@RequestBody BookIdDto bookIdDto){
-        System.out.println("제발: "+ bookIdDto.getId());
-        return new ResponseEntity<>("update success",HttpStatus.OK);
+    public ResponseEntity<?> updateBook(@RequestBody UpdateBookDto updateBookDto){
+        bookService.updateBook(updateBookDto);
+        return new ResponseEntity<>("hello",HttpStatus.OK);
     }
 }
