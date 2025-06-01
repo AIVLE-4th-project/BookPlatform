@@ -40,6 +40,7 @@ public class BookService {
     }
     public BookInfoDto getBookDetailInfo(Long id){
         Optional<Book> book = bookRepository.findById(id);
+        book.get().addViews(); //조회수 증가
         BookInfoDto bookInfoDto = BookInfoDto.builder().
                 title(book.get().getTitle()).
                 content(book.get().getContent()).
@@ -48,6 +49,7 @@ public class BookService {
                 createdAt(book.get().getCreatedAt()).
                 updatedAt(book.get().getUpdatedAt()).
                 build();
+
         return bookInfoDto;
     }
 
@@ -63,6 +65,7 @@ public class BookService {
                 coverUrl(imageService.generateImage(prompt)).
                 createdAt(LocalDateTime.now()).
                 updatedAt(LocalDateTime.now()).
+                views(0).
                 build();
         bookRepository.save(book);
     }
