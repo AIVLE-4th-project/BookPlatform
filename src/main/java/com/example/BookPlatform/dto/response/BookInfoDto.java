@@ -22,6 +22,9 @@ public class BookInfoDto {
     private String coverUrl; //표지 url
 
     @Column
+    private int views; // 조회수
+
+    @Column
     private LocalDateTime createdAt; //수정일
     @Column
     private LocalDateTime updatedAt; //수정일

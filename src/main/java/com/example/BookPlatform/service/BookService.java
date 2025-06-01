@@ -48,8 +48,8 @@ public class BookService {
                 coverUrl(book.get().getCoverUrl()).
                 createdAt(book.get().getCreatedAt()).
                 updatedAt(book.get().getUpdatedAt()).
+                views(book.get().getViews()).
                 build();
-
         return bookInfoDto;
     }
 
