@@ -4,6 +4,7 @@ import com.example.BookPlatform.dto.request.BookIdDto;
 import com.example.BookPlatform.dto.request.SaveBookInfoDto;
 import com.example.BookPlatform.dto.request.UpdateBookDto;
 import com.example.BookPlatform.service.BookService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,10 @@ public class BookController {
     public ResponseEntity<?> getBookDetailInfo( @RequestParam("id") Long id) {
         return new ResponseEntity<>(bookService.getBookDetailInfo(id), HttpStatus.OK);
     }
-
+    @GetMapping (value = "/books-author")
+    public ResponseEntity<?> getBooksByAuthorName( @RequestParam("author") String author) {
+        return new ResponseEntity<>(bookService.getBooksByAuthorName(author), HttpStatus.OK);
+    }
     @DeleteMapping(value = "/books") //책 정보 삭제
     public ResponseEntity<?> deleteBook(@RequestBody BookIdDto bookIdDto){
         bookService.deleteBook(bookIdDto);
