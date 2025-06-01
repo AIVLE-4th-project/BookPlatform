@@ -52,7 +52,20 @@ public class BookService {
                 build();
         return bookInfoDto;
     }
-
+    public List<BookListDto> getBooksByAuthorName(String author){
+        List<Book> bookList = bookRepository.findByAuthor(author);
+        List<BookListDto> bookInfoDtoList = new ArrayList<>();
+        for (Book book: bookList){
+            BookListDto bookInfoDto = BookListDto.builder().
+                    id(book.getId()).
+                    title(book.getTitle()).
+                    coverUrl(book.getCoverUrl()).
+                    createdAt(book.getCreatedAt()).
+                    build();
+            bookInfoDtoList.add(bookInfoDto);
+        }
+        return bookInfoDtoList;
+    }
     @Async
     public void registBook(SaveBookInfoDto saveBookInfoDto){
         String prompt =  "The title of the book is " +saveBookInfoDto.getTitle()+"and the content of the book is "
