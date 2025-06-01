@@ -30,6 +30,9 @@ public class Book {
     @Column(length = 1000)
     private String coverUrl; //url
 
+    @Column
+    private int views; //조회수
+
     // 등록일
     @CreationTimestamp
     private LocalDateTime createdAt; //등록일
@@ -37,4 +40,10 @@ public class Book {
     // 수정일
     @UpdateTimestamp
     private LocalDateTime updatedAt; //수정일
+
+    public void addViews() { //조회수 증가
+        this.views += 1;
+    }
+
+
 }
