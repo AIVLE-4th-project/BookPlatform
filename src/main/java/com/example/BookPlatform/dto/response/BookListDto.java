@@ -19,7 +19,8 @@ public class BookListDto {
     @Column
     private LocalDateTime createdAt; // 등록일
 
-
+    @Column
+    private String author;// 작가
     @Column
     private int views; // 조회수
 }
