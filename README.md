@@ -29,8 +29,8 @@
 - Material-UI (MUI)
 
 ### 🗃️ 데이터베이스
-- H2 (개발용)
 - MySQL
+- H2 (테스트용)
 
 ### 🔗 API
 - RESTful API
