@@ -34,7 +34,7 @@
 
 ### 🔗 API
 - RESTful API
-- OpenAI API (DALLE)
+- OpenAI API (DALL·E 3)
 
 ## 📦 주요 기능
 ```markdown
