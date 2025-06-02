@@ -39,6 +39,7 @@
 ## 📦 주요 기능
 ```markdown
 ## 📚 책 관리 API
+```
 
 ```java
 @GetMapping(value = "/books") //전체 목록 조회
@@ -73,6 +74,33 @@ public ResponseEntity<?> updateBook(@RequestBody UpdateBookDto updateBookDto){
   bookService.updateBook(updateBookDto);
   return new ResponseEntity<>("hello",HttpStatus.OK);
 }
+```
+
+```markdown
+## 📚 이미지 생성 (DALL·E 3 사용)
+```
+```java
+RestTemplate restTemplate = new RestTemplate();
+
+HttpHeaders headers = new HttpHeaders();
+headers.setBearerAuth(openAiApiKey);
+headers.setContentType(MediaType.APPLICATION_JSON);
+
+Map<String, Object> body = new HashMap<>();
+body.put("prompt", prompt);
+body.put("n", 1);
+body.put("size", "1024x1024");
+body.put("model", "dall-e-3");
+HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
+
+ResponseEntity<Map> response = restTemplate.postForEntity(
+  "https://api.openai.com/v1/images/generations",
+  request,
+  Map.class
+);
+
+List<Map<String, String>> data = (List<Map<String, String>>) response.getBody().get("data");
+return data.get(0).get("url");
 ```
 - 프롬프트 기반 이미지 생성 (DALL·E 3 사용)
 - 이미지 생성 여부 Boolean 값으로 제어
