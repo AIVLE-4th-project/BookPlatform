@@ -92,21 +92,32 @@ public class BookService {
     @Async
     public void updateBook(UpdateBookDto updateBookDto){
         Optional<Book> optionalBook = bookRepository.findById(updateBookDto.getId());
-        Book book = optionalBook.get();
 
+        Book existingBook = optionalBook.orElseThrow(() -> new RuntimeException("Book not found"));
 
-        String prompt =  "The title of the book is " +updateBookDto.getTitle()+"and the content of the book is "
-                +updateBookDto.getContent()+ ". Please generate a cover image for this book.";
+        // *************************************************************************
+        // AI 이미지 재생성 여부 확인
+        String coverUrl = existingBook.getCoverUrl(); // 기본값: 기존 이미지
 
-        book = Book.builder()
+        // 체크박스가 true일 때만 이미지 재생성
+        if (updateBookDto.isGenerateImage()) {
+            String prompt = "The title of the book is " + updateBookDto.getTitle() +
+                    " and the content of the book is " + updateBookDto.getContent() +
+                    ". Please generate a cover image for this book.";
+            coverUrl = imageService.generateImage(prompt);
+        }
+        // *************************************************************************
+
+        Book updatedBook = Book.builder()
                 .id(updateBookDto.getId())
                 .title(updateBookDto.getTitle())
                 .content(updateBookDto.getContent())
                 .author(updateBookDto.getAuthor())
-                .coverUrl(imageService.generateImage(prompt))
-                .createdAt(optionalBook.get().getCreatedAt())
-                .updatedAt(LocalDateTime.now()) // 수동으로 설정
+                .coverUrl(coverUrl) // ✅ 조건에 따라 새 이미지 or 기존 이미지
+                .createdAt(existingBook.getCreatedAt())
+                .updatedAt(LocalDateTime.now())
                 .build();
-         bookRepository.save(book);
+
+        bookRepository.save(updatedBook);
     }
 }
