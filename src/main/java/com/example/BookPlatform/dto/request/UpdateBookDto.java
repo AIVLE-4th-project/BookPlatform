@@ -19,5 +19,5 @@ public class UpdateBookDto {
     private String author; //저자
 
     @Column
-    private boolean flag; //
+    private boolean generateImage; //
 }
