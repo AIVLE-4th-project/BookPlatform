@@ -18,4 +18,8 @@ public class BookListDto {
     private String coverUrl; //표지 url
     @Column
     private LocalDateTime createdAt; // 등록일
+
+
+    @Column
+    private int views; // 조회수
 }

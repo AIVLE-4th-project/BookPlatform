@@ -33,6 +33,7 @@ public class BookService {
                     title(book.getTitle()).
                     coverUrl(book.getCoverUrl()).
                     createdAt(book.getCreatedAt()).
+                    views(book.getViews()).
                     build();
             bookInfoDtoList.add(bookInfoDto);
         }
@@ -61,6 +62,7 @@ public class BookService {
                     title(book.getTitle()).
                     coverUrl(book.getCoverUrl()).
                     createdAt(book.getCreatedAt()).
+                    views((book.getViews())).
                     build();
             bookInfoDtoList.add(bookInfoDto);
         }
