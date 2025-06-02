@@ -67,10 +67,6 @@ public ResponseEntity<?> getBookDetailInfo( @RequestParam("id") Long id) {
   return new ResponseEntity<>(bookService.getBookDetailInfo(id), HttpStatus.OK);
 }
 
-@GetMapping (value = "/books-author")  // 저자 정보 조회
-public ResponseEntity<?> getBooksByAuthorName( @RequestParam("author") String author) {
-  return new ResponseEntity<>(bookService.getBooksByAuthorName(author), HttpStatus.OK);
-}
 
 @DeleteMapping(value = "/books") //책 정보 삭제
 public ResponseEntity<?> deleteBook(@RequestBody BookIdDto bookIdDto){
