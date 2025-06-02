@@ -36,7 +36,20 @@
 - RESTful API
 - OpenAI API (DALL·E 3)
 
-<pre lang="markdown"><code> ## 🗂 프로젝트 구성도 ``` 📦 src └── 📦 main └── 📦 java └── 📦 com.example.bookplatform ├── 📁 config # 설정 파일 (예: CORS, Swagger 등) ├── 📁 controller # REST API 요청을 처리하는 컨트롤러 ├── 📁 dto # 요청/응답 시 사용하는 데이터 전송 객체 ├── 📁 entity # JPA 엔티티 클래스 (DB 매핑) ├── 📁 repository # 데이터베이스 접근을 담당하는 JPA 리포지토리 ├── 📁 service # 비즈니스 로직 담당 └── 📄 BookPlatformApplication.java # 메인 실행 파일 ``` </code></pre>
+## 🗂 프로젝트 구성도 
+```markdown 
+📦 src
+└── 📦 main
+└── 📦 java
+└── 📦 com.example.bookplatform
+├── 📁 config # 설정 파일 (예: CORS, Swagger 등)
+├── 📁 controller # REST API 요청을 처리하는 컨트롤러
+├── 📁 dto # 요청/응답 시 사용하는 데이터 전송 객체
+├── 📁 entity # JPA 엔티티 클래스 (DB 매핑)
+├── 📁 repository # 데이터베이스 접근을 담당하는 JPA 리포지토리
+├── 📁 service # 비즈니스 로직 담당
+└── 📄 BookPlatformApplication.java # 메인 실행 파일
+```
 
 ## 📦 주요 기능
 ```markdown
