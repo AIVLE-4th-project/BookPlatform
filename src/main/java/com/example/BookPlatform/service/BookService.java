@@ -116,6 +116,7 @@ public class BookService {
                 .coverUrl(coverUrl) // ✅ 조건에 따라 새 이미지 or 기존 이미지
                 .createdAt(existingBook.getCreatedAt())
                 .updatedAt(LocalDateTime.now())
+                .views(existingBook.getViews())
                 .build();
 
         bookRepository.save(updatedBook);
