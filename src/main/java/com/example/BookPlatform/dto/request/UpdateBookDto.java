@@ -18,5 +18,5 @@ public class UpdateBookDto {
     @Column
     private String author; //저자
 
-
+    private boolean generateImage; // 체크박스 상태 전달용 필드
 }
