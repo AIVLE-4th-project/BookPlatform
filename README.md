@@ -37,6 +37,43 @@
 - OpenAI API (DALLE)
 
 ## 📦 주요 기능
+```markdown
+## 📚 책 관리 API
+
+```java
+@GetMapping(value = "/books") //전체 목록 조회
+public ResponseEntity<?>  getBookList() {
+  return new ResponseEntity<>(bookService.getBookList(), HttpStatus.OK);
+}
+
+@GetMapping(value = "/books-detail") //상세 정보 조회
+public ResponseEntity<?> getBookDetailInfo( @RequestParam("id") Long id) {
+  return new ResponseEntity<>(bookService.getBookDetailInfo(id), HttpStatus.OK);
+}
+
+@GetMapping (value = "/books-author")  // 저자 정보 조회
+public ResponseEntity<?> getBooksByAuthorName( @RequestParam("author") String author) {
+  return new ResponseEntity<>(bookService.getBooksByAuthorName(author), HttpStatus.OK);
+}
+
+@DeleteMapping(value = "/books") //책 정보 삭제
+public ResponseEntity<?> deleteBook(@RequestBody BookIdDto bookIdDto){
+  bookService.deleteBook(bookIdDto);
+  return new ResponseEntity<>("delete success",HttpStatus.OK);
+}
+
+@PostMapping(value = "/books") //책 정보 등록
+public ResponseEntity<?> registBook(@RequestBody SaveBookInfoDto saveBookInfoDto){
+  bookService.registBook(saveBookInfoDto);
+  return new ResponseEntity<>("regist success",HttpStatus.OK);
+}
+
+@PutMapping(value = "/books") //책 정보 수정
+public ResponseEntity<?> updateBook(@RequestBody UpdateBookDto updateBookDto){
+  bookService.updateBook(updateBookDto);
+  return new ResponseEntity<>("hello",HttpStatus.OK);
+}
+
 - 프롬프트 기반 이미지 생성 (DALL·E 3 사용)
 - 이미지 생성 여부 Boolean 값으로 제어
 - 도서 정보 CRUD
