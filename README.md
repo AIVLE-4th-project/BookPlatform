@@ -102,12 +102,7 @@ ResponseEntity<Map> response = restTemplate.postForEntity(
 List<Map<String, String>> data = (List<Map<String, String>>) response.getBody().get("data");
 return data.get(0).get("url");
 ```
-- 프롬프트 기반 이미지 생성 (DALL·E 3 사용)
-- 이미지 생성 여부 Boolean 값으로 제어
-- 도서 정보 CRUD
-- 저자/제목 검색 기능 지원
-- 정렬 기능: 최신순 / 인기순
-- 
+
 ## 👥 팀원 소개
 
 | 이름     | 역할               |
