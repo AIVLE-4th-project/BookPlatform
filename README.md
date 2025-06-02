@@ -73,7 +73,7 @@ public ResponseEntity<?> updateBook(@RequestBody UpdateBookDto updateBookDto){
   bookService.updateBook(updateBookDto);
   return new ResponseEntity<>("hello",HttpStatus.OK);
 }
-
+```
 - 프롬프트 기반 이미지 생성 (DALL·E 3 사용)
 - 이미지 생성 여부 Boolean 값으로 제어
 - 도서 정보 CRUD
